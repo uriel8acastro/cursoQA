@@ -1,0 +1,3 @@
+# cursoQA
+Este repositorio tiene como fin almacenar los programas propuestos por el director de QA.
+listo para Inciar....
