@@ -1,10 +1,12 @@
 package cursoQA.fuentes;
 
 public class Main {
+	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Clave miClave = new Clave();
+		char opciones [] = {'L','U','N'};
+		System.out.println(miClave.generarClave(opciones, 5));
 	}
 
 }
