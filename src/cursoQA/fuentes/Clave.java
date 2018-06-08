@@ -8,10 +8,9 @@ import sun.font.CharToGlyphMapper;
  * 
  * @author cesar
  * 
- * Esta clase contiene los atributos de una clave
- * como son los caracteres que puede llegar a tener
- * los metodos retornaran cada uno los atributos
- * de caracteres requeridos.
+ * Esta clase contiene los atributos y metodos de una clave
+ * Los caracteres que puede contener la clave seran de tipo
+ * estatico
  *  
  */
 
@@ -69,7 +68,11 @@ public class Clave {
 				case 'N':
 					clave += obtenerCaracterAleatorio(NUMEROS);
 					j++;
-					break;	
+					break;
+				case 'S':
+					clave += obtenerCaracterAleatorio(SIMBOLOS);
+					j++;
+					break;
 				}
 
 			}
