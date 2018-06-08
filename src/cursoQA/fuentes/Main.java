@@ -7,7 +7,10 @@ public class Main {
 		Clave miClave = new Clave();
 		Entrada miEntrada = new Entrada();
 		String opcionesIngresadasConsola [] = {"L","N","U","F"};
-		Boolean entradaEsValida = miEntrada.validarOpcionesIngresadas(opcionesIngresadasConsola);		
+		Boolean entradaEsValida = miEntrada.validarOpcionesIngresadas(opcionesIngresadasConsola);
+		String opcionesAyuda [] = {"?"};
+		miEntrada.mostrarAyuda(opcionesAyuda, "?");
+		
 		
 		char opciones [] = {'U','L','N','S'};
 		System.out.println("La entrada se valido: " + entradaEsValida);

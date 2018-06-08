@@ -1,5 +1,12 @@
 package cursoQA.fuentes;
 
+/**
+ * 
+ * @author cesar
+ *Esta clase se crea para encargarle la validacion de las opciones 
+ *ingresadas por el usuario
+ */
+
 public class Entrada {
 	public static String OPCIONES_INFORMACION [] = {"?"};
 	public static String OPCIONES_INCLUSION [] = {"U","L","N","S"};
