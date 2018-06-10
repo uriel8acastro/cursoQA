@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import cursoQA.fuentes.Clave;
 import cursoQA.fuentes.Entrada;
+import cursoQA.fuentes.Main;
 
 /**
  * 
@@ -31,6 +32,7 @@ public class TestClave {
 	public void setUp() throws Exception {
 		miClaveTest = new Clave();
 		miEntradaTest = new Entrada();
+
 	}
 
 	/**
@@ -75,7 +77,7 @@ public class TestClave {
 		assertEquals(false, esValida);
 
 	}
-	
+
 	@Test
 	public void testValidarOpcionsModificadores() {
 		String opcionesModificadas[] = { "T:3", "Size:10", "E:3" };
@@ -121,7 +123,6 @@ public class TestClave {
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
 		assertEquals(true, claveTest.matches("[$|#|&|@|%]*"));
-		
 
 	}
 
@@ -202,10 +203,10 @@ public class TestClave {
 		assertEquals(10, miClaveTest.generarClave().length());
 
 	}
-	
+
 	@Test
 	public void testValidarCantidadClaves() {
-		String opciones[] = { "T:3", "U","S" };
+		String opciones[] = { "T:3", "U", "S" };
 		miClaveTest.setListaOpciones(opciones);
 		ArrayList<String> listaClaves = miClaveTest.mostrarArregloClaves();
 		for (String string : listaClaves) {
@@ -214,6 +215,5 @@ public class TestClave {
 		assertEquals(3, miClaveTest.mostrarArregloClaves().size());
 
 	}
-
 
 }

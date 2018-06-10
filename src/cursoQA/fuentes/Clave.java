@@ -23,7 +23,7 @@ public class Clave {
 	public static char CARACTERES_INDESEADOS[] = { '<', '>', '{', '}', '[', ']' };
 	public static int TAMANO_CLAVE_DEFECTO = 16;
 	public static char NUMEROS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
+	public static String OPCIONES_DEFECTO[]= {"U","L","N"};
 	// Almacena le tamaño de la clave
 	private int tamanoClave = TAMANO_CLAVE_DEFECTO;
 	// Almacena la combinacion de caracteres que llamaremos clave

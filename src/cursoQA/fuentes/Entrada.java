@@ -129,6 +129,7 @@ public class Entrada {
 	public int validarAparacionesOpcion(String[] listaOpciones, String opcionCandidata) {
 		int contador = 0;
 		for (int i = 0; i < listaOpciones.length; i++) {
+
 			if (listaOpciones[i].equals(opcionCandidata))
 				contador++;
 		}
