@@ -38,13 +38,15 @@ public class Main {
 			if (validaciones.validarOpcionesIngresadas()) {
 				Clave clave = new Clave();
 				clave.setListaOpciones(args);
+				
 				if (clave.mostrarCantidadClaves(args) <= 1) {
 					clave.generarClave();
 					System.out.println(clave.generarClave());
 				} else {
-					ArrayList<String> listaClaves = new ArrayList<>();
-					for (String string : listaClaves) {
-						System.out.println(listaClaves);
+					ArrayList<String> listaClaves;
+					listaClaves = clave.mostrarArregloClaves();					
+					for (int i = 0; i < listaClaves.size(); i++) {
+						System.out.println(listaClaves.get(i));
 					}
 				}
 			} else {

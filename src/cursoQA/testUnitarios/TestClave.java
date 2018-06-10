@@ -210,7 +210,7 @@ public class TestClave {
 		miClaveTest.setListaOpciones(opciones);
 		ArrayList<String> listaClaves = miClaveTest.mostrarArregloClaves();
 		for (String string : listaClaves) {
-			System.err.println(string);
+			System.out.println(string);
 		}
 		assertEquals(3, miClaveTest.mostrarArregloClaves().size());
 
