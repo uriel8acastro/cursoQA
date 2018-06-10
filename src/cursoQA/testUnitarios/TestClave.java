@@ -44,7 +44,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarOpcionInformacion() {
-		String opciones[] = { "?" };
+		String opciones[] = { "-?" };
 		miEntradaTest.setListaOpcionesIngresadas(opciones);
 		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
 		assertEquals(true, esValida);
@@ -53,7 +53,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarOpcionesInclusion() {
-		String opciones[] = { "U", "L", "N", "S" };
+		String opciones[] = { "-U", "-L", "-N", "-S" };
 		miEntradaTest.setListaOpcionesIngresadas(opciones);
 		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
 		assertEquals(true, esValida);
@@ -62,7 +62,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarOpcionNoValida() {
-		String opciones[] = { "U", "L", "N", "S", "Z" };
+		String opciones[] = { "-U", "-L", "-N", "-S", "-Z" };
 		miEntradaTest.setListaOpcionesIngresadas(opciones);
 		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
 		assertEquals(false, esValida);
@@ -71,7 +71,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarModificadoresNoValidos() {
-		String opciones[] = { "U:55", "L", "S" };
+		String opciones[] = { "-U:55", "-L", "-S" };
 		miEntradaTest.setListaOpcionesIngresadas(opciones);
 		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
 		assertEquals(false, esValida);
@@ -80,7 +80,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarOpcionsModificadores() {
-		String opcionesModificadas[] = { "T:3", "Size:10", "E:3" };
+		String opcionesModificadas[] = { "-T:3", "-Size:10", "-E:%$#" };
 		miEntradaTest.setListaOpcionesIngresadas(opcionesModificadas);
 		assertEquals(true, miEntradaTest.validarOpcionesIngresadas());
 
@@ -88,7 +88,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarClaveMayusculas() {
-		String opciones[] = { "U" };
+		String opciones[] = { "-U" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -98,7 +98,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarClaveMinusculas() {
-		String opciones[] = { "L" };
+		String opciones[] = { "-L" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -108,7 +108,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarClaveNumeros() {
-		String opciones[] = { "N" };
+		String opciones[] = { "-N" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -118,7 +118,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarClaveSimbolos() {
-		String opciones[] = { "S" };
+		String opciones[] = { "-S" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -128,7 +128,7 @@ public class TestClave {
 
 	@Test
 	public void testClaveMayusculasMinusculas() {
-		String opciones[] = { "L", "U" };
+		String opciones[] = { "-L", "-U" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -138,7 +138,7 @@ public class TestClave {
 
 	@Test
 	public void testClaveMayusculasNumeros() {
-		String opciones[] = { "U", "N" };
+		String opciones[] = { "-U", "-N" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -148,7 +148,7 @@ public class TestClave {
 
 	@Test
 	public void testClaveMinusculasNumeros() {
-		String opciones[] = { "L", "N" };
+		String opciones[] = { "-L", "-N" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -158,7 +158,7 @@ public class TestClave {
 
 	@Test
 	public void testClaveMayusculasSimbolos() {
-		String opciones[] = { "U", "S" };
+		String opciones[] = { "-U", "-S" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -168,7 +168,7 @@ public class TestClave {
 
 	@Test
 	public void testClaveMinusculasSimbolos() {
-		String opciones[] = { "L", "S" };
+		String opciones[] = { "-L", "-S" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -178,7 +178,7 @@ public class TestClave {
 
 	@Test
 	public void testClaveMinusculasMayusculasSimbolos() {
-		String opciones[] = { "L", "S", "U" };
+		String opciones[] = { "-L", "-S", "-U" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -188,7 +188,7 @@ public class TestClave {
 
 	@Test
 	public void testMinusculasMayusculasSimbolosNumeros() {
-		String opciones[] = { "L", "S", "U", "N" };
+		String opciones[] = { "-L", "-S", "-U", "-N" };
 		miClaveTest.setListaOpciones(opciones);
 		String claveTest = miClaveTest.generarClave();
 		System.out.println(claveTest);
@@ -198,7 +198,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarLongituClave() {
-		String opciones[] = { "Size:10", "U" };
+		String opciones[] = { "-Size:10", "-U" };
 		miClaveTest.setListaOpciones(opciones);
 		assertEquals(10, miClaveTest.generarClave().length());
 
@@ -206,7 +206,7 @@ public class TestClave {
 
 	@Test
 	public void testValidarCantidadClaves() {
-		String opciones[] = { "T:3", "U", "S" };
+		String opciones[] = { "-T:3", "-U", "-S" };
 		miClaveTest.setListaOpciones(opciones);
 		ArrayList<String> listaClaves = miClaveTest.mostrarArregloClaves();
 		for (String string : listaClaves) {

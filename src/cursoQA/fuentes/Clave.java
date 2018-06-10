@@ -23,7 +23,7 @@ public class Clave {
 	public static char CARACTERES_INDESEADOS[] = { '<', '>', '{', '}', '[', ']' };
 	public static int TAMANO_CLAVE_DEFECTO = 16;
 	public static char NUMEROS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-	public static String OPCIONES_DEFECTO[]= {"U","L","N"};
+	public static String OPCIONES_DEFECTO[]= {"-U","-L","-N"};
 	// Almacena le tamaño de la clave
 	private int tamanoClave = TAMANO_CLAVE_DEFECTO;
 	// Almacena la combinacion de caracteres que llamaremos clave
@@ -72,7 +72,7 @@ public class Clave {
 		int longitudClave = tamanoClave;
 		boolean flagSize = false;
 		for (int i = 0; i < listaOpciones.length; i++) {
-			if (listaOpciones[i].contains("Size:")) {
+			if (listaOpciones[i].contains("-Size:")) {
 				longitudClave = Integer.parseInt(listaOpciones[i].split(":")[1]);
 				// validar tañamo mayor a cero
 				if (longitudClave > 0) {
@@ -90,7 +90,7 @@ public class Clave {
 	public int mostrarCantidadClaves(String[] listaOpciones) {
 		int cantidadClaves = 1;
 		for (int i = 0; i < listaOpciones.length; i++) {
-			if(listaOpciones[i].contains("T:")) {
+			if(listaOpciones[i].contains("-T:")) {
 				cantidadClaves = Integer.parseInt(listaOpciones[i].split(":")[1]);
 				if(cantidadClaves > 1) {
 					return cantidadClaves;

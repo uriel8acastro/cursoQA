@@ -7,11 +7,11 @@ package cursoQA.fuentes;
  */
 
 public class Entrada {
-	public static String OPCIONES_INFORMACION[] = { "?" };
-	public static String OPCIONES_INCLUSION[] = { "U", "L", "N", "S" };
-	public static String OPCIONES_EXCLUSION[] = { "A", "E" };
-	public static String OPCIONES_GENERACION[] = { "Size", "T" };
-	public static String OPCIONES_COPIA[] = { "c" };
+	public static String OPCIONES_INFORMACION[] = { "-?" };
+	public static String OPCIONES_INCLUSION[] = { "-U", "-L", "-N", "-S" };
+	public static String OPCIONES_EXCLUSION[] = { "-A", "-E" };
+	public static String OPCIONES_GENERACION[] = { "-Size", "-T" };
+	public static String OPCIONES_COPIA[] = { "-c" };
 	public static String INFORMACION[] = { "BigBanKey -? ---> Informacion de general de la herramienta",
 			"-U ---> Crear clave con letras Mayusculas (*)", "-L ---> Crear clave con letras Minusculas (*)",
 			"-S ---> Crear Clave con numeros (*)", "-A ---> Excluir caracteres Ambiguos (*)",
@@ -69,8 +69,8 @@ public class Entrada {
 			// Valida que la opcion contine : luego es compuesta extrae solo la primera
 			// parte
 			if (opcion.contains(":")) {
-				if (optenerOpcion(opcion).equals("Size") || optenerOpcion(opcion).equals("E")
-						|| optenerOpcion(opcion).equals("T")) {
+				if (optenerOpcion(opcion).equals("-Size") || optenerOpcion(opcion).equals("-E")
+						|| optenerOpcion(opcion).equals("-T")) {
 					opcion = optenerOpcion(opcion);
 				} else {
 					System.err.println(opcion + " No tiene modificadores o no es una opcion valida");
@@ -171,7 +171,7 @@ public class Entrada {
 	 */
 	public Boolean validarTamañoClave() {
 		for (int i = 0; i < listaOpcionesIngresadas.length; i++) {
-			if (listaOpcionesIngresadas[i].contains("Size")) {
+			if (listaOpcionesIngresadas[i].contains("-Size")) {
 				int longituClave = Integer.parseInt(listaOpcionesIngresadas[i].split(":")[1]);
 				if ((longituClave >= 1) && (longituClave <= 16)) {
 					return true;
