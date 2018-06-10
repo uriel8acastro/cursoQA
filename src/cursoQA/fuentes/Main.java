@@ -13,11 +13,13 @@ public class Main {
 		System.out.println("::::::::::::::::::::::::::");
 
 		Entrada validaciones = new Entrada();
+		//se valida no habian argumentos de entrada para generar clave por defecto
 		if (args.length == 0) {
 			Clave clave = new Clave();
 			clave.setListaOpciones(clave.OPCIONES_DEFECTO);
 			System.out.println(clave.generarClave());
-		} else {
+		} 
+		else {
 
 			validaciones.setListaOpcionesIngresadas(args);
 			

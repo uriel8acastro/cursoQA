@@ -135,20 +135,20 @@ public class Clave {
 				for (int i = 0; i < listaOpciones.length && (j < longitudClave); i++) {
 					switch (listaOpciones[i]) {
 
-					case "U":
+					case "-U":
 						clave += obtenerCaracterAleatorio(LETRAS_MAYUSCULAS);
 						j++;
 						break;
-					case "L":
+					case "-L":
 						clave += obtenerCaracterAleatorio(LETRAS_MINUSCULAS);
 						j++;
 						break;
 
-					case "N":
+					case "-N":
 						clave += obtenerCaracterAleatorio(NUMEROS);
 						j++;
 						break;
-					case "S":
+					case "-S":
 						clave += obtenerCaracterAleatorio(SIMBOLOS);
 						j++;
 						break;
