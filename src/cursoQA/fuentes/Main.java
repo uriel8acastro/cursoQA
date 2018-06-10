@@ -2,6 +2,14 @@ package cursoQA.fuentes;
 
 import java.util.ArrayList;
 
+/**
+ * Esta es una herramienta para generacion de claves
+ * automatica que usa parametros para controlar
+ * la creacion y la seguridad de las claves.
+ * @author cesar
+ *
+ */
+
 public class Main {
 
 	public static void main(String[] args) {

@@ -47,7 +47,7 @@ public class TestClave {
 		String opciones[] = { "-?" };
 		miEntradaTest.setListaOpcionesIngresadas(opciones);
 		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
-		assertEquals(true, esValida);
+		assertEquals(false, esValida);
 
 	}
 

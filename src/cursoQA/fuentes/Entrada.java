@@ -56,6 +56,16 @@ public class Entrada {
 
 		int contadorOpcionesValidas = 0;
 
+		// Validar si la opcion ingresada es ayuda
+		if (listaOpcionesIngresadas.length == 1) {
+			if (listaOpcionesIngresadas[0].equals("-?")) {
+				for (String string : INFORMACION) {
+					System.out.println(string);
+				}
+				return false;
+			}
+		}
+
 		for (int i = 0; i < listaOpcionesIngresadas.length; i++) {
 
 			String opcion = listaOpcionesIngresadas[i];
@@ -81,10 +91,6 @@ public class Entrada {
 
 			// esta validacion se usa para detecta opciones no validas
 
-			if (validarAparacionesOpcion(OPCIONES_INFORMACION, opcion) == 0) {
-				contadorOpcionesValidas++;
-			}
-
 			if (validarAparacionesOpcion(OPCIONES_INCLUSION, opcion) == 0) {
 
 				contadorOpcionesValidas++;
@@ -105,7 +111,7 @@ public class Entrada {
 				contadorOpcionesValidas++;
 			}
 
-			if (contadorOpcionesValidas == 5) {
+			if (contadorOpcionesValidas == 4) {
 				System.err.println(opcion + " No es una opcion valida");
 				return false;
 			} else {

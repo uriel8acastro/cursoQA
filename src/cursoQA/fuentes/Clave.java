@@ -23,7 +23,7 @@ public class Clave {
 	public static char CARACTERES_INDESEADOS[] = { '<', '>', '{', '}', '[', ']' };
 	public static int TAMANO_CLAVE_DEFECTO = 16;
 	public static char NUMEROS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-	public static String OPCIONES_DEFECTO[]= {"-U","-L","-N"};
+	public static String OPCIONES_DEFECTO[] = { "-U", "-L", "-N" };
 	// Almacena le tamaño de la clave
 	private int tamanoClave = TAMANO_CLAVE_DEFECTO;
 	// Almacena la combinacion de caracteres que llamaremos clave
@@ -86,32 +86,31 @@ public class Clave {
 		return tamanoClave;
 
 	}
-	
+
 	public int mostrarCantidadClaves(String[] listaOpciones) {
 		int cantidadClaves = 1;
 		for (int i = 0; i < listaOpciones.length; i++) {
-			if(listaOpciones[i].contains("-T:")) {
+			if (listaOpciones[i].contains("-T:")) {
 				cantidadClaves = Integer.parseInt(listaOpciones[i].split(":")[1]);
-				if(cantidadClaves > 1) {
+				if (cantidadClaves > 1) {
 					return cantidadClaves;
-				}
-				else {
+				} else {
 					return 1;
 				}
 			}
 		}
-		
+
 		return 1;
-		
+
 	}
-	
+
 	/**
-	 * Este metodo alacena la cantidad de claves
-	 * que se especifiquen en la opcion
+	 * Este metodo alacena la cantidad de claves que se especifiquen en la opcion
+	 * 
 	 * @return
 	 */
-	
-	public ArrayList<String> mostrarArregloClaves(){
+
+	public ArrayList<String> mostrarArregloClaves() {
 		int cantidadClaves = mostrarCantidadClaves(listaOpciones);
 		ArrayList<String> listaClaves = new ArrayList<String>();
 		for (int cont = 0; cont < cantidadClaves; cont++) {
@@ -122,41 +121,43 @@ public class Clave {
 	}
 
 	/**
-	 * Metodo encargado de generar la clave deacuerdo ala lista de opciones ingresada
+	 * Metodo encargado de generar la clave deacuerdo ala lista de opciones
+	 * ingresada
+	 * 
 	 * @param listaOpciones
 	 * @return
 	 */
 
 	public String generarClave() {
-		int longitudClave = mostrarLongitudClave(listaOpciones);		
-		String clave = "";		
-			int j = 0;
-			while (j < longitudClave) {
-				for (int i = 0; i < listaOpciones.length && (j < longitudClave); i++) {
-					switch (listaOpciones[i]) {
+		int longitudClave = mostrarLongitudClave(listaOpciones);
+		String clave = "";
+		int j = 0;
+		while (j < longitudClave) {
+			for (int i = 0; i < listaOpciones.length && (j < longitudClave); i++) {
+				switch (listaOpciones[i]) {
 
-					case "-U":
-						clave += obtenerCaracterAleatorio(LETRAS_MAYUSCULAS);
-						j++;
-						break;
-					case "-L":
-						clave += obtenerCaracterAleatorio(LETRAS_MINUSCULAS);
-						j++;
-						break;
+				case "-U":
+					clave += obtenerCaracterAleatorio(LETRAS_MAYUSCULAS);
+					j++;
+					break;
+				case "-L":
+					clave += obtenerCaracterAleatorio(LETRAS_MINUSCULAS);
+					j++;
+					break;
 
-					case "-N":
-						clave += obtenerCaracterAleatorio(NUMEROS);
-						j++;
-						break;
-					case "-S":
-						clave += obtenerCaracterAleatorio(SIMBOLOS);
-						j++;
-						break;
-
-					}
+				case "-N":
+					clave += obtenerCaracterAleatorio(NUMEROS);
+					j++;
+					break;
+				case "-S":
+					clave += obtenerCaracterAleatorio(SIMBOLOS);
+					j++;
+					break;
 
 				}
-			}			
+
+			}
+		}
 
 		return clave;
 	}
