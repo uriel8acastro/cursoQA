@@ -19,6 +19,7 @@ import cursoQA.source.PwdGen;
 /**
  * 
  * @author cesar Pruebas unitarias para clase Clave y la Clase Entrada
+ * 
  *
  */
 public class TestPwdGen {

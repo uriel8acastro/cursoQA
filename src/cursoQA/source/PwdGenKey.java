@@ -24,7 +24,7 @@ public class PwdGenKey {
 	public static int TAMANO_CLAVE_DEFECTO = 16;
 	public static char NUMEROS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 	public static String OPCIONES_DEFECTO[] = { "-U", "-L", "-N" };
-	// Almacena le tamaño de la clave
+	// Almacena le tamano de la clave
 	private int tamanoClave = TAMANO_CLAVE_DEFECTO;
 	// Almacena la combinacion de caracteres que llamaremos clave
 	private String claveGenerada;
@@ -54,7 +54,7 @@ public class PwdGenKey {
 	/**
 	 * 
 	 * @param limiteSuperior:
-	 *            es el tamaño del arreglo
+	 *            es el tamano del arreglo
 	 * @return entero que corresponde a un indice del arreglo
 	 */
 	public int generarIndiceAleatorio(int limiteSuperior) {
@@ -63,10 +63,10 @@ public class PwdGenKey {
 	}
 
 	/**
-	 * Para obtener el tamaño de la clave
+	 * Para obtener el tamano de la clave
 	 * 
 	 * @param listaOpciones
-	 * @return el tamoño segun la opcion o el tamaño por defecto
+	 * @return el tamono segun la opcion o el tamano por defecto
 	 */
 	public int mostrarLongitudClave(String[] listaOpciones) {
 		int longitudClave = tamanoClave;
@@ -74,7 +74,7 @@ public class PwdGenKey {
 		for (int i = 0; i < listaOpciones.length; i++) {
 			if (listaOpciones[i].contains("-Size:")) {
 				longitudClave = Integer.parseInt(listaOpciones[i].split(":")[1]);
-				// validar tañamo mayor a cero
+				// validar tanamo mayor a cero
 				if (longitudClave > 0) {
 					return longitudClave;
 				} else {

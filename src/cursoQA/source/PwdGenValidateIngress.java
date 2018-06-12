@@ -172,7 +172,7 @@ public class PwdGenValidateIngress {
 
 	/**
 	 * 
-	 * @return Falso si los numeros que acompañan a la opcion Size no estan el rango
+	 * @return Falso si los numeros que acompanan a la opcion Size no estan el rango
 	 *         permitido
 	 */
 	public Boolean validarTamanoClave() {
