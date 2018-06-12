@@ -1,3 +1,4 @@
+package cursoQA.test;
 /**
  * 
  */
@@ -11,8 +12,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import cursoQA.source.Clave;
-import cursoQA.source.Entrada;
+import cursoQA.source.PwdGenKey;
+import cursoQA.source.PwdGenValidateIngress;
 import cursoQA.source.PwdGen;
 
 /**
@@ -20,18 +21,18 @@ import cursoQA.source.PwdGen;
  * @author cesar Pruebas unitarias para clase Clave y la Clase Entrada
  *
  */
-public class TestClave {
+public class TestPwdGen {
 
-	Clave miClaveTest;
-	Entrada miEntradaTest;
+	PwdGenKey miClaveTest;
+	PwdGenValidateIngress miEntradaTest;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		miClaveTest = new Clave();
-		miEntradaTest = new Entrada();
+		miClaveTest = new PwdGenKey();
+		miEntradaTest = new PwdGenValidateIngress();
 
 	}
 

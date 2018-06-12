@@ -12,7 +12,7 @@ import java.util.Random;
  * 
  */
 
-public class Clave {
+public class PwdGenKey {
 
 	public static char LETRAS_MAYUSCULAS[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
 			'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };

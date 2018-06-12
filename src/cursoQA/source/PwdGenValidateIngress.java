@@ -6,7 +6,7 @@ package cursoQA.source;
  *         opciones ingresadas por el usuario
  */
 
-public class Entrada {
+public class PwdGenValidateIngress {
 	public static String OPCIONES_INFORMACION[] = { "-?" };
 	public static String OPCIONES_INCLUSION[] = { "-U", "-L", "-N", "-S" };
 	public static String OPCIONES_EXCLUSION[] = { "-A", "-E" };
@@ -33,7 +33,7 @@ public class Entrada {
 	 * Constructor sin parametros
 	 */
 
-	public Entrada() {
+	public PwdGenValidateIngress() {
 
 	}
 
@@ -42,7 +42,7 @@ public class Entrada {
 	 * 
 	 * @param listaOpcionAValidar
 	 */
-	public Entrada(String[] listaOpcionAValidar) {
+	public PwdGenValidateIngress(String[] listaOpcionAValidar) {
 		this.listaOpcionesIngresadas = listaOpcionAValidar;
 	}
 

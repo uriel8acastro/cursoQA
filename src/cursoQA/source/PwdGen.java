@@ -24,17 +24,17 @@ public class PwdGen {
 		System.out.println(":::::      ***       :::::");
 		System.out.println("::::::::::::::::::::::::::");
 
-		Entrada validaciones = new Entrada();
+		PwdGenValidateIngress validaciones = new PwdGenValidateIngress();
 		// se valida no habian argumentos de entrada para generar clave por defecto
 		if (args.length == 0) {
-			Clave clave = new Clave();
+			PwdGenKey clave = new PwdGenKey();
 			clave.setListaOpciones(clave.OPCIONES_DEFECTO);
 			System.out.println(clave.generarClave());
 		} else {
 
 			validaciones.setListaOpcionesIngresadas(args);
 			if (validaciones.validarOpcionesIngresadas()) {
-				Clave clave = new Clave();
+				PwdGenKey clave = new PwdGenKey();
 				clave.setListaOpciones(args);
 
 				if (clave.mostrarCantidadClaves(args) <= 1) {
