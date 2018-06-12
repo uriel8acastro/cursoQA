@@ -24,7 +24,7 @@ public class PwdGen {
 		System.out.println("::::::::::::::::::::::::::");
 
 		PwdGenValidateIngress validaciones = new PwdGenValidateIngress();
-		// se valida no habian argumentos de entrada para generar clave por defecto
+		// Valid if the entry list is empty
 		if (args.length == 0) {
 			PwdGenKey clave = new PwdGenKey();
 			clave.setListaOpciones(clave.OPCIONES_DEFECTO);
