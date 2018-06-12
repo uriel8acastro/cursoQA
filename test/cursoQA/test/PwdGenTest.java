@@ -21,7 +21,7 @@ import cursoQA.source.PwdGenValidateIngress;
  * 
  *
  */
-public class TestPwdGen {
+public class PwdGenTest {
 
 	PwdGenKey miClaveTest;
 	PwdGenValidateIngress miEntradaTest;
