@@ -1,9 +1,9 @@
 package cursoQA.source;
 
 /**
+ * this class is responsible for the validation of the entry options
  * 
- * @author cesar Esta clase se crea para encargarle la validacion de las
- *         opciones ingresadas por el usuario
+ * @author cesar
  */
 
 public class PwdGenValidateIngress {
@@ -12,12 +12,13 @@ public class PwdGenValidateIngress {
 	public static String OPCIONES_EXCLUSION[] = { "-A", "-E" };
 	public static String OPCIONES_GENERACION[] = { "-Size", "-T" };
 	public static String OPCIONES_COPIA[] = { "-c" };
-	public static String INFORMACION[] = { "BigBanKey -? ---> Informacion de general de la herramienta",
-			"-U ---> Crear clave con letras Mayusculas (*)", "-L ---> Crear clave con letras Minusculas (*)",
-			"-S ---> Crear Clave con numeros (*)", "-A ---> Excluir caracteres Ambiguos (*)",
-			"-E ---> Excluir caracteres Especilaes (*)", "-T: ---> Total de claves a crear (*)",
-			"-c ---> Opcion de copiar al portapales (*)", "(*)---> Indica si es opcional",
-			"-Size: ---> Indica la logitud deseada, por defecto 16 (*) " };
+	public static String INFORMACION[] = { "BigBanKey -? --->PwdGen tool options",
+			"-U ---> create key with uppercase letters (*)", "-L ---> create key with lowercase letters (*)",
+			"-N ---> create key with numbers (*)", "-S ---> create key with symbols (*)",
+			"-A ---> exclude ambiguous characters example -A:l (*)", "-E ---> exclude special characters (*)",
+			"-T: ---> number of keys to create example -T:3 (*)", "-c ---> option to copy to clipboard (*)",
+			"-Size: ---> indicates the length the key, by default it is  16 (*) ",
+			"(*)---> Indicate if it is optional" };
 
 	private String[] listaOpcionesIngresadas;
 
@@ -30,7 +31,7 @@ public class PwdGenValidateIngress {
 	}
 
 	/**
-	 * Constructor sin parametros
+	 * Constructor without parameters
 	 */
 
 	public PwdGenValidateIngress() {
@@ -38,7 +39,7 @@ public class PwdGenValidateIngress {
 	}
 
 	/**
-	 * Contructor con una lista de opciones de entrada
+	 * Constructor with list of parameters
 	 * 
 	 * @param listaOpcionAValidar
 	 */
@@ -49,8 +50,7 @@ public class PwdGenValidateIngress {
 	/**
 	 * 
 	 * @param listaOpcionesIngresadas
-	 * @return retornara true si es valido el arreglo de opciones o false si no
-	 *         cumple cualquiera de las caracteristicas
+	 * @return true if the options are valid or false if they are not
 	 */
 	public boolean validarOpcionesIngresadas() {
 
@@ -72,7 +72,7 @@ public class PwdGenValidateIngress {
 
 			// esta validacion se realiza para detectar una opcion repetida
 			if (validarAparacionesOpcion(listaOpcionesIngresadas, opcion) > 1) {
-				System.err.println("La siguiente opcion esta repetida " + opcion);
+				System.err.println("the option is repeated: " + opcion);
 				return false;
 			}
 
@@ -83,7 +83,7 @@ public class PwdGenValidateIngress {
 						|| optenerOpcion(opcion).equals("-T")) {
 					opcion = optenerOpcion(opcion);
 				} else {
-					System.err.println(opcion + " No tiene modificadores o no es una opcion valida");
+					System.err.println(opcion + " it has no modifiers or is not a valid option");
 					return false;
 				}
 
@@ -112,7 +112,7 @@ public class PwdGenValidateIngress {
 			}
 
 			if (contadorOpcionesValidas == 4) {
-				System.err.println(opcion + " No es una opcion valida");
+				System.err.println(opcion + " it is not a valid option");
 				return false;
 			} else {
 				contadorOpcionesValidas = 0;
@@ -127,9 +127,9 @@ public class PwdGenValidateIngress {
 	/**
 	 * 
 	 * @param listaOpciones:
-	 *            Cada arreglo estatico de opciones
+	 *            arrangement of program options
 	 * @param opcion:
-	 *            La opcion que se quiere validar para el arreglo.
+	 *            option that you want to validate
 	 * @return
 	 */
 	public int validarAparacionesOpcion(String[] listaOpciones, String opcionCandidata) {
@@ -144,7 +144,7 @@ public class PwdGenValidateIngress {
 
 	/**
 	 * 
-	 * @return retornara la cantida de opciones disponibles
+	 * @return the amount of options available
 	 */
 	public int mostrarCantidadOpciones() {
 		int numeroDeOpcionesPosibles = OPCIONES_INFORMACION.length + OPCIONES_INCLUSION.length
@@ -153,11 +153,12 @@ public class PwdGenValidateIngress {
 	}
 
 	/**
+	 * Print the options that the program has
 	 * 
 	 * @param listaOpciones
-	 *            Las opciones de ayuda es una pero podrian llegar a ser mas
+	 *            List of options
 	 * @param opcioAyuda
-	 *            se estable el caracter de ayuda que debe existir previamente
+	 *            help character
 	 */
 
 	public void mostrarAyuda(String[] listaOpciones, String opcioAyuda) {
@@ -171,9 +172,9 @@ public class PwdGenValidateIngress {
 	}
 
 	/**
+	 * Valid that the maximum size of a key size
 	 * 
-	 * @return Falso si los numeros que acompanan a la opcion Size no estan el rango
-	 *         permitido
+	 * @return returns false if the modifier does not meet the range of the option
 	 */
 	public Boolean validarTamanoClave() {
 		for (int i = 0; i < listaOpcionesIngresadas.length; i++) {
@@ -190,10 +191,12 @@ public class PwdGenValidateIngress {
 	}
 
 	/**
+	 * this method is responsible for taking the option without its modifiers
 	 * 
 	 * @param opcionConMoficadores:
-	 *            ingresa como una opcion con modificaores ejemplo E:3, Size:16
-	 * @return retorna la cadena o caracter que representa la opcion principal
+	 *            Option to validate
+	 * 
+	 * @return returns option without modifiers
 	 */
 	public String optenerOpcion(String opcionConMoficadores) {
 		String opcionPrincipal;

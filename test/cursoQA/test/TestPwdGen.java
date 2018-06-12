@@ -14,11 +14,10 @@ import org.junit.Test;
 
 import cursoQA.source.PwdGenKey;
 import cursoQA.source.PwdGenValidateIngress;
-import cursoQA.source.PwdGen;
 
 /**
- * 
- * @author cesar Pruebas unitarias para clase Clave y la Clase Entrada
+ * unit tests
+ * @author cesar 
  * 
  *
  */

@@ -5,11 +5,12 @@ import java.util.Random;
 
 /**
  * 
+ * 
+ * 
+ * This class contains the attributes and methods of a key, the characters that
+ * the key can contain will be of a static type
+ * 
  * @author cesar
- * 
- *         Esta clase contiene los atributos y metodos de una clave Los
- *         caracteres que puede contener la clave seran de tipo estatico
- * 
  */
 
 public class PwdGenKey {

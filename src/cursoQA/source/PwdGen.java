@@ -3,8 +3,7 @@ package cursoQA.source;
 import java.util.ArrayList;
 
 /**
- * Esta es una herramienta para generacion de claves automatica que usa
- * parametros para controlar la creacion y la seguridad de las claves.
+ * PwdGen is a tool for the automatic generation of keys
  * 
  * @author cesar
  *
@@ -14,7 +13,7 @@ public class PwdGen {
 
 	public static void main(String[] args) {
 		/**
-		 * Entrada al programa BigBankey Saludo de bienvenida
+		 * Welcome message
 		 */
 		System.out.println(":::::::::WELCOME::::::::::");
 		System.out.println("::::::::BIGBANKEY:::::::::");
@@ -49,7 +48,7 @@ public class PwdGen {
 				}
 			} else {
 
-				System.out.println("Intentalo nuevamente o pide ayuda con -?");
+				System.out.println("Try again or ask for help -?");
 			}
 
 		}
