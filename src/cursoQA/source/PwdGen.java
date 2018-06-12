@@ -1,4 +1,4 @@
-package cursoQA.fuentes;
+package cursoQA.source;
 
 import java.util.ArrayList;
 

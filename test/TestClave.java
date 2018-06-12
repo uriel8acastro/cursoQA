@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cursoQA.testUnitarios;
+
 
 import static org.junit.Assert.*;
 
@@ -11,9 +11,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import cursoQA.fuentes.Clave;
-import cursoQA.fuentes.Entrada;
-import cursoQA.fuentes.PwdGen;
+import cursoQA.source.Clave;
+import cursoQA.source.Entrada;
+import cursoQA.source.PwdGen;
 
 /**
  * 
