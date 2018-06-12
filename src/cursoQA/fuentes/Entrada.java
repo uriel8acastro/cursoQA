@@ -175,7 +175,7 @@ public class Entrada {
 	 * @return Falso si los numeros que acompañan a la opcion Size no estan el rango
 	 *         permitido
 	 */
-	public Boolean validarTamañoClave() {
+	public Boolean validarTamanoClave() {
 		for (int i = 0; i < listaOpcionesIngresadas.length; i++) {
 			if (listaOpcionesIngresadas[i].contains("-Size")) {
 				int longituClave = Integer.parseInt(listaOpcionesIngresadas[i].split(":")[1]);

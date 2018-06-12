@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import cursoQA.fuentes.Clave;
 import cursoQA.fuentes.Entrada;
-import cursoQA.fuentes.Main;
+import cursoQA.fuentes.PwdGen;
 
 /**
  * 
