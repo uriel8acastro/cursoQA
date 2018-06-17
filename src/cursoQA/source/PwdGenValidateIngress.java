@@ -7,12 +7,12 @@ package cursoQA.source;
  */
 
 public class PwdGenValidateIngress {
-	public static String OPCIONES_INFORMACION[] = { "-?" };
-	public static String OPCIONES_INCLUSION[] = { "-U", "-L", "-N", "-S" };
-	public static String OPCIONES_EXCLUSION[] = { "-A", "-E" };
-	public static String OPCIONES_GENERACION[] = { "-Size", "-T" };
-	public static String OPCIONES_COPIA[] = { "-c" };
-	public static String INFORMACION[] = { "BigBanKey -? --->PwdGen tool options",
+	public static String INFORMATION_OPTIONS[] = { "-?" };
+	public static String INCLUSION_OPTIONS[] = { "-U", "-L", "-N", "-S" };
+	public static String EXCLUSION_OPTIONS[] = { "-A", "-E" };
+	public static String GENERATION_OPTIONS[] = { "-Size", "-T" };
+	public static String COPY_OPTIONS[] = { "-c" };
+	public static String INFORMATION[] = { "BigBanKey -? --->PwdGen tool options",
 			"-U ---> create key with uppercase letters (*)", "-L ---> create key with lowercase letters (*)",
 			"-N ---> create key with numbers (*)", "-S ---> create key with symbols (*)",
 			"-A ---> exclude ambiguous characters example -A:l (*)", "-E ---> exclude special characters (*)",
@@ -20,14 +20,14 @@ public class PwdGenValidateIngress {
 			"-Size: ---> indicates the length the key, by default it is  16 (*) ",
 			"(*)---> Indicate if it is optional" };
 
-	private String[] listaOpcionesIngresadas;
+	private String[] listOptionsEntered;
 
-	public String[] getListaOpcionesIngresadas() {
-		return listaOpcionesIngresadas;
+	public String[] getListOptionsEntered() {
+		return listOptionsEntered;
 	}
 
-	public void setListaOpcionesIngresadas(String[] listaOpcionesIngresadas) {
-		this.listaOpcionesIngresadas = listaOpcionesIngresadas;
+	public void setListOptionsEntered(String[] optionsEntered) {
+		this.listOptionsEntered = optionsEntered;
 	}
 
 	/**
@@ -41,49 +41,49 @@ public class PwdGenValidateIngress {
 	/**
 	 * Constructor with list of parameters
 	 * 
-	 * @param listaOpcionAValidar
+	 * @param optionsToProcess
 	 */
-	public PwdGenValidateIngress(String[] listaOpcionAValidar) {
-		this.listaOpcionesIngresadas = listaOpcionAValidar;
+	public PwdGenValidateIngress(String[] optionsToProcess) {
+		this.listOptionsEntered = optionsToProcess;
 	}
 
 	/**
 	 * 
-	 * @param listaOpcionesIngresadas
+	 * @param listOptionsEntered
 	 * @return true if the options are valid or false if they are not
 	 */
-	public boolean validarOpcionesIngresadas() {
+	public boolean validateEnteredOptions() {
 
-		int contadorOpcionesValidas = 0;
+		int validationCounter = 0;
 
 		// Validar si la opcion ingresada es ayuda
-		if (listaOpcionesIngresadas.length == 1) {
-			if (listaOpcionesIngresadas[0].equals("-?")) {
-				for (String string : INFORMACION) {
+		if (listOptionsEntered.length == 1) {
+			if (listOptionsEntered[0].equals("-?")) {
+				for (String string : INFORMATION) {
 					System.out.println(string);
 				}
 				return false;
 			}
 		}
 
-		for (int i = 0; i < listaOpcionesIngresadas.length; i++) {
+		for (int i = 0; i < listOptionsEntered.length; i++) {
 
-			String opcion = listaOpcionesIngresadas[i];
+			String option = listOptionsEntered[i];
 
 			// esta validacion se realiza para detectar una opcion repetida
-			if (validarAparacionesOpcion(listaOpcionesIngresadas, opcion) > 1) {
-				System.err.println("the option is repeated: " + opcion);
+			if (validateAppearanceOption(listOptionsEntered, option) > 1) {
+				System.err.println("the option is repeated: " + option);
 				return false;
 			}
 
 			// Valida que la opcion contine : luego es compuesta extrae solo la primera
 			// parte
-			if (opcion.contains(":")) {
-				if (optenerOpcion(opcion).equals("-Size") || optenerOpcion(opcion).equals("-E")
-						|| optenerOpcion(opcion).equals("-T")) {
-					opcion = optenerOpcion(opcion);
+			if (option.contains(":")) {
+				if (obtainOption(option).equals("-Size") || obtainOption(option).equals("-E")
+						|| obtainOption(option).equals("-T")) {
+					option = obtainOption(option);
 				} else {
-					System.err.println(opcion + " it has no modifiers or is not a valid option");
+					System.err.println(option + " it has no modifiers or is not a valid option");
 					return false;
 				}
 
@@ -91,31 +91,31 @@ public class PwdGenValidateIngress {
 
 			// esta validacion se usa para detecta opciones no validas
 
-			if (validarAparacionesOpcion(OPCIONES_INCLUSION, opcion) == 0) {
+			if (validateAppearanceOption(INCLUSION_OPTIONS, option) == 0) {
 
-				contadorOpcionesValidas++;
+				validationCounter++;
 			}
 
-			if (validarAparacionesOpcion(OPCIONES_EXCLUSION, opcion) == 0) {
+			if (validateAppearanceOption(EXCLUSION_OPTIONS, option) == 0) {
 
-				contadorOpcionesValidas++;
+				validationCounter++;
 			}
 
-			if (validarAparacionesOpcion(OPCIONES_GENERACION, opcion) == 0) {
+			if (validateAppearanceOption(GENERATION_OPTIONS, option) == 0) {
 
-				contadorOpcionesValidas++;
+				validationCounter++;
 			}
 
-			if (validarAparacionesOpcion(OPCIONES_COPIA, opcion) == 0) {
+			if (validateAppearanceOption(COPY_OPTIONS, option) == 0) {
 
-				contadorOpcionesValidas++;
+				validationCounter++;
 			}
 
-			if (contadorOpcionesValidas == 4) {
-				System.err.println(opcion + " it is not a valid option");
+			if (validationCounter == 4) {
+				System.err.println(option + " it is not a valid option");
 				return false;
 			} else {
-				contadorOpcionesValidas = 0;
+				validationCounter = 0;
 			}
 
 		}
@@ -132,40 +132,40 @@ public class PwdGenValidateIngress {
 	 *            option that you want to validate
 	 * @return
 	 */
-	public int validarAparacionesOpcion(String[] listaOpciones, String opcionCandidata) {
-		int contador = 0;
-		for (int i = 0; i < listaOpciones.length; i++) {
+	public int validateAppearanceOption(String[] optionList, String candidateOption) {
+		int count = 0;
+		for (int i = 0; i < optionList.length; i++) {
 
-			if (listaOpciones[i].equals(opcionCandidata))
-				contador++;
+			if (optionList[i].equals(candidateOption))
+				count++;
 		}
-		return contador;
+		return count;
 	}
 
 	/**
 	 * 
 	 * @return the amount of options available
 	 */
-	public int mostrarCantidadOpciones() {
-		int numeroDeOpcionesPosibles = OPCIONES_INFORMACION.length + OPCIONES_INCLUSION.length
-				+ OPCIONES_EXCLUSION.length + OPCIONES_GENERACION.length + OPCIONES_COPIA.length;
+	public int showAmountOptions() {
+		int numeroDeOpcionesPosibles = INFORMATION_OPTIONS.length + INCLUSION_OPTIONS.length
+				+ EXCLUSION_OPTIONS.length + GENERATION_OPTIONS.length + COPY_OPTIONS.length;
 		return numeroDeOpcionesPosibles;
 	}
 
 	/**
 	 * Print the options that the program has
 	 * 
-	 * @param listaOpciones
+	 * @param optionsList
 	 *            List of options
-	 * @param opcioAyuda
+	 * @param helpOption
 	 *            help character
 	 */
 
-	public void mostrarAyuda(String[] listaOpciones, String opcioAyuda) {
-		for (int i = 0; i < listaOpciones.length; i++) {
-			if (listaOpciones[i].equals(opcioAyuda)) {
-				for (int j = 0; j < INFORMACION.length; j++) {
-					System.out.println(INFORMACION[j]);
+	public void helpDisplay(String[] optionsList, String helpOption) {
+		for (int i = 0; i < optionsList.length; i++) {
+			if (optionsList[i].equals(helpOption)) {
+				for (int j = 0; j < INFORMATION.length; j++) {
+					System.out.println(INFORMATION[j]);
 				}
 			}
 		}
@@ -176,11 +176,11 @@ public class PwdGenValidateIngress {
 	 * 
 	 * @return returns false if the modifier does not meet the range of the option
 	 */
-	public Boolean validarTamanoClave() {
-		for (int i = 0; i < listaOpcionesIngresadas.length; i++) {
-			if (listaOpcionesIngresadas[i].contains("-Size")) {
-				int longituClave = Integer.parseInt(listaOpcionesIngresadas[i].split(":")[1]);
-				if ((longituClave >= 1) && (longituClave <= 16)) {
+	public Boolean validateKeySize() {
+		for (int i = 0; i < listOptionsEntered.length; i++) {
+			if (listOptionsEntered[i].contains("-Size")) {
+				int keyLength = Integer.parseInt(listOptionsEntered[i].split(":")[1]);
+				if ((keyLength >= 1) && (keyLength <= 16)) {
 					return true;
 				} else {
 					return false;
@@ -198,10 +198,10 @@ public class PwdGenValidateIngress {
 	 * 
 	 * @return returns option without modifiers
 	 */
-	public String optenerOpcion(String opcionConMoficadores) {
-		String opcionPrincipal;
-		opcionPrincipal = opcionConMoficadores.split(":")[0];
-		return opcionPrincipal;
+	public String obtainOption(String modifierOptions) {
+		String principalOption;
+		principalOption = modifierOptions.split(":")[0];
+		return principalOption;
 	}
 
 }

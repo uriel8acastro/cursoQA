@@ -23,16 +23,16 @@ import cursoQA.source.PwdGenValidateIngress;
  */
 public class PwdGenTest {
 
-	PwdGenKey miClaveTest;
-	PwdGenValidateIngress miEntradaTest;
+	PwdGenKey myKeyTest;
+	PwdGenValidateIngress myInTest;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		miClaveTest = new PwdGenKey();
-		miEntradaTest = new PwdGenValidateIngress();
+		myKeyTest = new PwdGenKey();
+		myInTest = new PwdGenValidateIngress();
 
 	}
 
@@ -44,176 +44,176 @@ public class PwdGenTest {
 	}
 
 	@Test
-	public void testValidarOpcionInformacion() {
-		String opciones[] = { "-?" };
-		miEntradaTest.setListaOpcionesIngresadas(opciones);
-		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
-		assertEquals(false, esValida);
+	public void validateInformationOptionTest() {
+		String options[] = { "-?" };
+		myInTest.setListOptionsEntered(options);
+		Boolean isOk = myInTest.validateEnteredOptions();
+		assertEquals(false, isOk);
 
 	}
 
 	@Test
-	public void testValidarOpcionesInclusion() {
-		String opciones[] = { "-U", "-L", "-N", "-S" };
-		miEntradaTest.setListaOpcionesIngresadas(opciones);
-		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
-		assertEquals(true, esValida);
+	public void validateInclusionOptionTest() {
+		String options[] = { "-U", "-L", "-N", "-S" };
+		myInTest.setListOptionsEntered(options);
+		Boolean isOK = myInTest.validateEnteredOptions();
+		assertEquals(true, isOK);
 
 	}
 
 	@Test
-	public void testValidarOpcionNoValida() {
-		String opciones[] = { "-U", "-L", "-N", "-S", "-Z" };
-		miEntradaTest.setListaOpcionesIngresadas(opciones);
-		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
-		assertEquals(false, esValida);
+	public void validateInvalidOptionTest() {
+		String options[] = { "-U", "-L", "-N", "-S", "-Z" };
+		myInTest.setListOptionsEntered(options);
+		Boolean isOK = myInTest.validateEnteredOptions();
+		assertEquals(false, isOK);
 
 	}
 
 	@Test
-	public void testValidarModificadoresNoValidos() {
-		String opciones[] = { "-U:55", "-L", "-S" };
-		miEntradaTest.setListaOpcionesIngresadas(opciones);
-		Boolean esValida = miEntradaTest.validarOpcionesIngresadas();
-		assertEquals(false, esValida);
+	public void validateInvalidModifiersTest() {
+		String options[] = { "-U:55", "-L", "-S" };
+		myInTest.setListOptionsEntered(options);
+		Boolean isOK = myInTest.validateEnteredOptions();
+		assertEquals(false, isOK);
 
 	}
 
 	@Test
-	public void testValidarOpcionsModificadores() {
-		String opcionesModificadas[] = { "-T:3", "-Size:10", "-E:%$#" };
-		miEntradaTest.setListaOpcionesIngresadas(opcionesModificadas);
-		assertEquals(true, miEntradaTest.validarOpcionesIngresadas());
+	public void validateModifiersOfOptionsTest() {
+		String modifiersOptions[] = { "-T:3", "-Size:10", "-E:%$#" };
+		myInTest.setListOptionsEntered(modifiersOptions);
+		assertEquals(true, myInTest.validateEnteredOptions());
 
 	}
 
 	@Test
-	public void testValidarClaveMayusculas() {
-		String opciones[] = { "-U" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[A-Z]*"));
+	public void validateKeyWithUpperCaseTest() {
+		String options[] = { "-U" };
+		myKeyTest.setOptionsList(options);
+		String keyTest = myKeyTest.generatePassword();
+		System.out.println(keyTest);
+		assertEquals(true, keyTest.matches("[A-Z]*"));
 
 	}
 
 	@Test
 	public void testValidarClaveMinusculas() {
-		String opciones[] = { "-L" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[a-z]*"));
+		String options[] = { "-L" };
+		myKeyTest.setOptionsList(options);
+		String keyTest = myKeyTest.generatePassword();
+		System.out.println(keyTest);
+		assertEquals(true, keyTest.matches("[a-z]*"));
 
 	}
 
 	@Test
-	public void testValidarClaveNumeros() {
-		String opciones[] = { "-N" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[0-9]*"));
+	public void validateKeyWithNumbersTest() {
+		String options[] = { "-N" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[0-9]*"));
 
 	}
 
 	@Test
-	public void testValidarClaveSimbolos() {
-		String opciones[] = { "-S" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[$|#|&|@|%]*"));
+	public void validateKeyWithSymbolsTest() {
+		String options[] = { "-S" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[$|#|&|@|%]*"));
 
 	}
 
 	@Test
-	public void testClaveMayusculasMinusculas() {
-		String opciones[] = { "-L", "-U" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[a-z|A-Z]*"));
+	public void validateKeyWithLowerCaseTest() {
+		String options[] = { "-L", "-U" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[a-z|A-Z]*"));
 
 	}
 
 	@Test
-	public void testClaveMayusculasNumeros() {
-		String opciones[] = { "-U", "-N" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[A-Z|0-9]*"));
+	public void validateKeyUpperAndLowerCaseTest() {
+		String options[] = { "-U", "-N" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[A-Z|0-9]*"));
 
 	}
 
 	@Test
-	public void testClaveMinusculasNumeros() {
-		String opciones[] = { "-L", "-N" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[a-z|0-9]*"));
+	public void validateKeyNumberAndLowerCaseTest() {
+		String options[] = { "-L", "-N" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[a-z|0-9]*"));
 
 	}
 
 	@Test
-	public void testClaveMayusculasSimbolos() {
-		String opciones[] = { "-U", "-S" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[A-Z|$|#|&|@|%]*"));
+	public void validateKeyUpperCaseAndSymbolsTest() {
+		String options[] = { "-U", "-S" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[A-Z|$|#|&|@|%]*"));
 
 	}
 
 	@Test
-	public void testClaveMinusculasSimbolos() {
-		String opciones[] = { "-L", "-S" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[a-z|$|#|&|@|%]*"));
+	public void validateKeySymbolsAndLowerCaseTest() {
+		String options[] = { "-L", "-S" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[a-z|$|#|&|@|%]*"));
 
 	}
 
 	@Test
-	public void testClaveMinusculasMayusculasSimbolos() {
-		String opciones[] = { "-L", "-S", "-U" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[a-z|$|#|&|@|%|A-Z]*"));
+	public void validateKeyUpperLowerSymbolsTest() {
+		String options[] = { "-L", "-S", "-U" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[a-z|$|#|&|@|%|A-Z]*"));
 
 	}
 
 	@Test
-	public void testMinusculasMayusculasSimbolosNumeros() {
-		String opciones[] = { "-L", "-S", "-U", "-N" };
-		miClaveTest.setListaOpciones(opciones);
-		String claveTest = miClaveTest.generarClave();
-		System.out.println(claveTest);
-		assertEquals(true, claveTest.matches("[a-z|$|#|&|@|%|A-Z|0-9]*"));
+	public void validateKeyUpperSymbolsNumbersTest() {
+		String options[] = { "-L", "-S", "-U", "-N" };
+		myKeyTest.setOptionsList(options);
+		String keyTes = myKeyTest.generatePassword();
+		System.out.println(keyTes);
+		assertEquals(true, keyTes.matches("[a-z|$|#|&|@|%|A-Z|0-9]*"));
 
 	}
 
 	@Test
-	public void testValidarLongituClave() {
-		String opciones[] = { "-Size:10", "-U" };
-		miClaveTest.setListaOpciones(opciones);
-		assertEquals(10, miClaveTest.generarClave().length());
+	public void validateKeySizeTest() {
+		String options[] = { "-Size:10", "-U" };
+		myKeyTest.setOptionsList(options);
+		assertEquals(10, myKeyTest.generatePassword().length());
 
 	}
 
 	@Test
-	public void testValidarCantidadClaves() {
-		String opciones[] = { "-T:3", "-U", "-S" };
-		miClaveTest.setListaOpciones(opciones);
-		ArrayList<String> listaClaves = miClaveTest.mostrarArregloClaves();
-		for (String string : listaClaves) {
+	public void validateAmountKeysTest() {
+		String options[] = { "-T:3", "-U", "-S" };
+		myKeyTest.setOptionsList(options);
+		ArrayList<String> keysList = myKeyTest.showArrayOfKeys();
+		for (String string : keysList) {
 			System.out.println(string);
 		}
-		assertEquals(3, miClaveTest.mostrarArregloClaves().size());
+		assertEquals(3, myKeyTest.showArrayOfKeys().size());
 
 	}
 

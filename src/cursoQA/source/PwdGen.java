@@ -23,25 +23,25 @@ public class PwdGen {
 		System.out.println(":::::      ***       :::::");
 		System.out.println("::::::::::::::::::::::::::");
 
-		PwdGenValidateIngress validaciones = new PwdGenValidateIngress();
+		PwdGenValidateIngress validations = new PwdGenValidateIngress();
 		// Valid if the entry list is empty
 		if (args.length == 0) {
-			PwdGenKey clave = new PwdGenKey();
-			clave.setListaOpciones(clave.OPCIONES_DEFECTO);
-			System.out.println(clave.generarClave());
+			PwdGenKey myKey = new PwdGenKey();
+			myKey.setOptionsList(myKey.DEFAULT_OPTIONS);
+			System.out.println(myKey.generatePassword());
 		} else {
 
-			validaciones.setListaOpcionesIngresadas(args);
-			if (validaciones.validarOpcionesIngresadas()) {
-				PwdGenKey clave = new PwdGenKey();
-				clave.setListaOpciones(args);
+			validations.setListOptionsEntered(args);
+			if (validations.validateEnteredOptions()) {
+				PwdGenKey myOutKey = new PwdGenKey();
+				myOutKey.setOptionsList(args);
 
-				if (clave.mostrarCantidadClaves(args) <= 1) {
-					clave.generarClave();
-					System.out.println(clave.generarClave());
+				if (myOutKey.showAmountKeys(args) <= 1) {
+					myOutKey.generatePassword();
+					System.out.println(myOutKey.generatePassword());
 				} else {
 					ArrayList<String> listaClaves;
-					listaClaves = clave.mostrarArregloClaves();
+					listaClaves = myOutKey.showArrayOfKeys();
 					for (int i = 0; i < listaClaves.size(); i++) {
 						System.out.println(listaClaves.get(i));
 					}
