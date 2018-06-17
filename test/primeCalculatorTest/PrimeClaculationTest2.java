@@ -11,45 +11,56 @@ import primeCalculator.Calculator;
 
 public class PrimeClaculationTest2 {
 
-	Calculator miCalculator;
-	ArrayList<Integer> miArray;
+	Calculator myCalculator;
+	ArrayList<Integer> myArray;
 
 	@Before
 	public void setUp() throws Exception {
-		miCalculator = new Calculator();
-		miArray = new ArrayList<>();
+		myCalculator = new Calculator();
+		myArray = new ArrayList<>();
+	}
+
+	@Test
+	public void firtsSolutionTest() {
+		myCalculator.firstSolution(1000);
+	}
+
+	@Test
+	public void secondSolutionTest() {
+		myCalculator.secondSolution(100);
 	}
 
 	@Test
 	public void validateParentsNumbers2() {
-		miArray.add(31);
-		miArray.add(13);
-		assertTrue(miCalculator.isNumberBrother(miArray.get(0), miArray.get(1)));
+		myArray.add(31);
+		myArray.add(13);
+		assertTrue(myCalculator.isNumberBrother(myArray.get(0), myArray.get(1)));
 
 	}
-	
+
 	@Test
 	public void validateParentsNumbers3() {
-		miArray.add(917);
-		miArray.add(197);
-		assertTrue(miCalculator.isNumberBrother(miArray.get(0), miArray.get(1)));
+		myArray.add(917);
+		myArray.add(197);
+		assertTrue(myCalculator.isNumberBrother(myArray.get(0), myArray.get(1)));
 
 	}
 
 	@Test
 	public void validateSearchPrimes() {
-		miArray.add(2);
-		miArray.add(3);
-		miArray.add(5);
-		miArray.add(7);
-		assertEquals(miArray, miCalculator.getListPrimes(7));
+		myArray.add(2);
+		myArray.add(3);
+		myArray.add(5);
+		myArray.add(7);
+		assertEquals(myArray, myCalculator.getListPrimes(7));
 
 	}
 
 	@Test
 	public void SearchCircularPrimes() {
-        miArray = miCalculator.getListPrimes(1000);
-        miCalculator.showPrimesResults(miArray);
-		
+		myArray = myCalculator.getListPrimes(40);
+		myCalculator.showPrimesResults(myArray);
+
 	}
+
 }

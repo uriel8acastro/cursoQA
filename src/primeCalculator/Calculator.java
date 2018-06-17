@@ -180,7 +180,12 @@ public class Calculator {
 		for (Integer integerOri : arrayPrimes) {
 			for (Integer integerParent : arrayOriginal) {
 				if (isNumberBrother(integerOri, integerParent)) {
-					arrayPrimesResults.add(integerParent);
+					if (validateNumerExist(arrayPrimesResults, integerParent.intValue())) {
+
+					} else {
+						arrayPrimesResults.add(integerParent);
+					}
+
 				}
 
 			}
@@ -189,6 +194,23 @@ public class Calculator {
 		for (Integer integer : arrayPrimesResults) {
 			System.out.println(integer.intValue());
 		}
+	}
+
+	/**
+	 * 
+	 * @param arrInteger
+	 *            Array List of Integers
+	 * @param numberWanted
+	 *            A Integer
+	 * @return True if the number exist in the array List
+	 */
+	public boolean validateNumerExist(ArrayList<Integer> arrInteger, int numberWanted) {
+		for (Integer integer : arrInteger) {
+			if (numberWanted == integer.intValue()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -219,10 +241,8 @@ public class Calculator {
 			String strOriginal = original.toString();
 			for (int i = 0; i < strParent.length(); i++) {
 				for (int j = 0; j < strOriginal.length(); j++) {
-
 					if (strParent.charAt(i) == strOriginal.charAt(j))
 						count++;
-
 				}
 
 			}
@@ -259,7 +279,7 @@ public class Calculator {
 				storeListCousinsArray(i);
 
 			}
-			
+
 		}
 		showPrimesResults(arrayPrimes);
 
@@ -270,7 +290,7 @@ public class Calculator {
 			if (searchPrimeNumberTwo(i)) {
 				storeListCousinsArray(i);
 
-			}			
+			}
 		}
 		showPrimesResults(arrayPrimes);
 	}
@@ -281,7 +301,7 @@ public class Calculator {
 				storeListCousinsHash(i);
 
 			}
-		}		
+		}
 
 	}
 
