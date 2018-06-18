@@ -16,6 +16,7 @@ public class Calculator {
 	public Hashtable<String, String> hastablePrimes = new Hashtable<String, String>();
 	public ArrayList<Integer> arrayPrimes = new ArrayList<>();
 	public ArrayList<Integer> arrayPrimesResults = new ArrayList<>();
+	public Hashtable<String, String> hastablePrimesResults = new Hashtable<String, String>();
 
 	/**
 	 * Metodo para determinar si un numero es o no primo implementa las mejoras de
@@ -254,6 +255,25 @@ public class Calculator {
 		}
 
 	}
+	
+	public Hashtable<String, String> hashCircularPrime(Hashtable<String, String> hashPrimes) {
+		Hashtable<String, String> outHash = new Hashtable<String, String>();
+		Enumeration<String> enumeration = hashPrimes.elements();
+		
+		 while(enumeration.hasMoreElements()) {	
+			    String oriNumber = enumeration.nextElement();
+			    
+				char lastNumber = oriNumber.charAt(oriNumber.length()-1);
+				String firstNumbers = oriNumber.substring(0, oriNumber.length()-2);
+				String tempNumber = lastNumber+firstNumbers;
+				if(hashPrimes.containsValue(tempNumber)) {
+					outHash.put(""+outHash.size(), tempNumber);
+					outHash.put(""+outHash.size(), oriNumber);
+				}
+		 }
+		 
+		 return outHash;
+	}
 
 	/**
 	 * Metodo usado en las prubas unitarias
@@ -302,6 +322,8 @@ public class Calculator {
 
 			}
 		}
+		hastablePrimesResults = hashCircularPrime(hastablePrimes);
+		showPrimesInHash(hastablePrimesResults);
 
 	}
 

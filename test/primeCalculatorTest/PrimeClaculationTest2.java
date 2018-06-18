@@ -19,7 +19,7 @@ public class PrimeClaculationTest2 {
 		myCalculator = new Calculator();
 		myArray = new ArrayList<>();
 	}
-
+/*
 	@Test
 	public void firtsSolutionTest() {
 		myCalculator.firstSolution(1000);
@@ -61,6 +61,13 @@ public class PrimeClaculationTest2 {
 		myArray = myCalculator.getListPrimes(40);
 		myCalculator.showPrimesResults(myArray);
 
+	}
+	
+	*/
+	
+	@Test 
+	public  void thirdSolutionTest() {
+		myCalculator.thirdSolution(100);
 	}
 
 }
