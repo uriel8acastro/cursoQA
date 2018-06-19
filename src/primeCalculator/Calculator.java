@@ -16,7 +16,7 @@ public class Calculator {
 	public Hashtable<Integer, Integer> hastablePrimes = new Hashtable<Integer, Integer>();
 	public ArrayList<Integer> arrayPrimes = new ArrayList<>();
 	public ArrayList<Integer> arrayPrimesResults = new ArrayList<>();
-	public Hashtable<Integer, Integer> hastablePrimesResults = new Hashtable<Integer, Integer>();
+	public Hashtable<Integer, Integer> hastablePrimesResults = new Hashtable<>();
 
 	/**
 	 * Metodo para determinar si un numero es o no primo implementa las mejoras de
@@ -257,30 +257,44 @@ public class Calculator {
 	}
 
 	public void hashCircularPrime(Hashtable<Integer, Integer> hashPrimes) {
-		Integer key = 1;
+		Integer key = 0;
 		Integer outKey = 0;
-		// System.out.println(hashPrimes.get(key));
-		while (hashPrimes.size()<key) {
+		while (key.intValue() < hashPrimes.size()) {
 			Integer numberHash = hashPrimes.get(key);
-			if (numberHash.intValue() <= 11) {
+			if (numberHash <= 11) {
 				key++;
 				continue;
 			}
 
-			String auxStringNumber = numberHash.toString();            
-			char lastNumber = auxStringNumber.charAt(auxStringNumber.length() - 1);
-			//String firstNumbers = auxStringNumber.substring(0, auxStringNumber.length() - 2);
-			String firstNumbers = (String) auxStringNumber.subSequence(0, auxStringNumber.length() - 2);
-			String tempNumber = lastNumber + firstNumbers;
-			Integer circularNumber = Integer.valueOf(tempNumber);
-
-			if (hashPrimes.containsValue(circularNumber)) {
-				hastablePrimesResults.put(outKey, circularNumber);
-				outKey++;
-				hastablePrimesResults.put(outKey, numberHash);
-				outKey++;
+			String auxStringNumber = numberHash.toString();
+			if(auxStringNumber.length()<=2) {
+				char lastNumber = auxStringNumber.charAt(auxStringNumber.length() - 1);
+				char firstNumber = auxStringNumber.charAt(auxStringNumber.length() - 2);
+				String tempNumber = String.valueOf(lastNumber)+String.valueOf(firstNumber);
+				Integer circularNumber = Integer.valueOf(tempNumber);
+				
+				if (hashPrimes.containsValue(circularNumber)) {
+					hastablePrimesResults.put(outKey, circularNumber);
+					outKey++;
+					hastablePrimesResults.put(outKey, numberHash);
+					outKey++;
+				}
+				
+			}else {
+				char lastNumber = auxStringNumber.charAt(auxStringNumber.length() - 1);
+				String firstNumbers = auxStringNumber.substring(0, auxStringNumber.length() - 2);
+				String tempNumber = lastNumber + firstNumbers;
+				Integer circularNumber = Integer.valueOf(tempNumber);
+				
+				if (hashPrimes.containsValue(circularNumber)) {
+					hastablePrimesResults.put(outKey, circularNumber);
+					outKey++;
+					hastablePrimesResults.put(outKey, numberHash);
+					outKey++;
+				}
 			}
 
+			
 			key++;
 		}
 

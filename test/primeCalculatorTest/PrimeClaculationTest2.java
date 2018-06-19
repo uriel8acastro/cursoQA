@@ -15,11 +15,13 @@ public class PrimeClaculationTest2 {
 	Calculator myCalculator;
 	ArrayList<Integer> myArray;
 	Hashtable myHash ;
+	Hashtable<Integer, Integer> outPrimes;
 	@Before
 	public void setUp() throws Exception {
 		myCalculator = new Calculator();
 		myArray = new ArrayList<>();
-		myHash = new Hashtable<Integer,Integer>();
+		myHash = new Hashtable<>();
+		outPrimes = new Hashtable<>();
 	}
 /*
 	@Test
@@ -70,6 +72,7 @@ public class PrimeClaculationTest2 {
 		myHash = myCalculator.getListPrimesHash(40);
 		myCalculator.hashCircularPrime(myHash);
 		myCalculator.showPrimesInHash(myCalculator.hastablePrimesResults);
+		//myCalculator.showPrimesInHash(myHash);
 
 	}
 	
