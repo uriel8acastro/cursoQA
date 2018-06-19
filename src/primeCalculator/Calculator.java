@@ -13,10 +13,10 @@ import java.util.Hashtable;
 
 public class Calculator {
 
-	public Hashtable<String, String> hastablePrimes = new Hashtable<String, String>();
+	public Hashtable<Integer, Integer> hastablePrimes = new Hashtable<Integer, Integer>();
 	public ArrayList<Integer> arrayPrimes = new ArrayList<>();
 	public ArrayList<Integer> arrayPrimesResults = new ArrayList<>();
-	public Hashtable<String, String> hastablePrimesResults = new Hashtable<String, String>();
+	public Hashtable<Integer, Integer> hastablePrimesResults = new Hashtable<Integer, Integer>();
 
 	/**
 	 * Metodo para determinar si un numero es o no primo implementa las mejoras de
@@ -127,7 +127,7 @@ public class Calculator {
 	 */
 
 	public void storeListCousinsHash(int number) {
-		hastablePrimes.put(" " + hastablePrimes.size(), " " + number);
+		hastablePrimes.put(hastablePrimes.size(), number);
 	}
 
 	/**
@@ -143,11 +143,11 @@ public class Calculator {
 	/**
 	 * Metodo para imprimir el contenido de una tabla Hash
 	 * 
-	 * @param hastable
+	 * @param hastablePrimesResults2
 	 *            Una tabla hash de primos entre 1 y un millon
 	 */
-	public void showPrimesInHash(Hashtable<String, String> hastable) {
-		Enumeration<String> enumeration = hastable.elements();
+	public void showPrimesInHash(Hashtable<Integer, Integer> hastablePrimesResults2) {
+		Enumeration<Integer> enumeration = hastablePrimesResults2.elements();
 		int count = 1;
 		while (enumeration.hasMoreElements()) {
 			System.out.println(count + " " + enumeration.nextElement());
@@ -255,24 +255,35 @@ public class Calculator {
 		}
 
 	}
-	
-	public Hashtable<String, String> hashCircularPrime(Hashtable<String, String> hashPrimes) {
-		Hashtable<String, String> outHash = new Hashtable<String, String>();
-		Enumeration<String> enumeration = hashPrimes.elements();
-		
-		 while(enumeration.hasMoreElements()) {	
-			    String oriNumber = enumeration.nextElement();
-			    
-				char lastNumber = oriNumber.charAt(oriNumber.length()-1);
-				String firstNumbers = oriNumber.substring(0, oriNumber.length()-2);
-				String tempNumber = lastNumber+firstNumbers;
-				if(hashPrimes.containsValue(tempNumber)) {
-					outHash.put(""+outHash.size(), tempNumber);
-					outHash.put(""+outHash.size(), oriNumber);
-				}
-		 }
-		 
-		 return outHash;
+
+	public void hashCircularPrime(Hashtable<Integer, Integer> hashPrimes) {
+		Integer key = 1;
+		Integer outKey = 0;
+		// System.out.println(hashPrimes.get(key));
+		while (hashPrimes.size()<key) {
+			Integer numberHash = hashPrimes.get(key);
+			if (numberHash.intValue() <= 11) {
+				key++;
+				continue;
+			}
+
+			String auxStringNumber = numberHash.toString();            
+			char lastNumber = auxStringNumber.charAt(auxStringNumber.length() - 1);
+			//String firstNumbers = auxStringNumber.substring(0, auxStringNumber.length() - 2);
+			String firstNumbers = (String) auxStringNumber.subSequence(0, auxStringNumber.length() - 2);
+			String tempNumber = lastNumber + firstNumbers;
+			Integer circularNumber = Integer.valueOf(tempNumber);
+
+			if (hashPrimes.containsValue(circularNumber)) {
+				hastablePrimesResults.put(outKey, circularNumber);
+				outKey++;
+				hastablePrimesResults.put(outKey, numberHash);
+				outKey++;
+			}
+
+			key++;
+		}
+
 	}
 
 	/**
@@ -282,15 +293,29 @@ public class Calculator {
 	 *            cuanto primos se dese buscar
 	 * @return listado de primos hast el limite dado.
 	 */
-	public ArrayList<Integer> getListPrimes(int limit) {
+	public ArrayList<Integer> getListPrimesArray(int limit) {
 		for (int i = 1; i <= limit; i++) {
-			if (searchPrimeNumberOne(i)) {
-				// storeListCousinsHash(i);
+			if (searchPrimeNumberTwo(i)) {
 				storeListCousinsArray(i);
 
 			}
 		}
 		return arrayPrimes;
+	}
+
+	/**
+	 * Rerurn primes in hashTable
+	 * 
+	 * @param limit
+	 * @return
+	 */
+	public Hashtable<Integer, Integer> getListPrimesHash(int limit) {
+		for (int i = 1; i <= limit; i++) {
+			if (searchPrimeNumberTwo(i)) {
+				storeListCousinsHash(i);
+			}
+		}
+		return hastablePrimes;
 	}
 
 	public void firstSolution(int upperLimit) {
@@ -322,7 +347,7 @@ public class Calculator {
 
 			}
 		}
-		hastablePrimesResults = hashCircularPrime(hastablePrimes);
+		hashCircularPrime(hastablePrimes);
 		showPrimesInHash(hastablePrimesResults);
 
 	}

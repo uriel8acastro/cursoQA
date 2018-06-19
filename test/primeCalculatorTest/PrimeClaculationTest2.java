@@ -3,6 +3,7 @@ package primeCalculatorTest;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,11 +14,12 @@ public class PrimeClaculationTest2 {
 
 	Calculator myCalculator;
 	ArrayList<Integer> myArray;
-
+	Hashtable myHash ;
 	@Before
 	public void setUp() throws Exception {
 		myCalculator = new Calculator();
 		myArray = new ArrayList<>();
+		myHash = new Hashtable<Integer,Integer>();
 	}
 /*
 	@Test
@@ -57,17 +59,25 @@ public class PrimeClaculationTest2 {
 	}
 
 	@Test
-	public void SearchCircularPrimes() {
-		myArray = myCalculator.getListPrimes(40);
+	public void searchParentPrimesTest() {
+		myArray = myCalculator.getListPrimesArray(40);
 		myCalculator.showPrimesResults(myArray);
 
 	}
-	
 	*/
+	@Test
+	public void searchCircularPrimesHashTest() {
+		myHash = myCalculator.getListPrimesHash(40);
+		myCalculator.hashCircularPrime(myHash);
+		myCalculator.showPrimesInHash(myCalculator.hastablePrimesResults);
+
+	}
 	
+	/*
 	@Test 
 	public  void thirdSolutionTest() {
 		myCalculator.thirdSolution(100);
 	}
+	*/
 
 }
