@@ -12,9 +12,6 @@ import java.util.ArrayList;
 public class PwdGen {
 
 	public static void main(String[] args) {
-		/**
-		 * Welcome message
-		 */
 		System.out.println(":::::::::WELCOME::::::::::");
 		System.out.println("::::::::BIGBANKEY:::::::::");
 		System.out.println(":::::Power By Cesar8a:::::");

@@ -69,7 +69,7 @@ public class PrimeClaculationTest2 {
 	*/
 	@Test
 	public void searchCircularPrimesHashTest() {
-		myHash = myCalculator.getListPrimesHash(40);
+		myHash = myCalculator.getListPrimesHash(10000);
 		myCalculator.hashCircularPrime(myHash);
 		myCalculator.showPrimesInHash(myCalculator.hastablePrimesResults);
 		//myCalculator.showPrimesInHash(myHash);
