@@ -77,5 +77,32 @@ public class SearchPrimeFast {
         return finalTime;
     }
 
+    public int getCircular(int originalNumber){
+        ArrayList<Integer> myDivisor = new ArrayList<>();
+        ArrayList<Integer> myResults = new ArrayList<>();
+        ArrayList<Integer> myModuls = new ArrayList<>();
+        int circular =0;
+
+        int i = 1000000;
+        int count = 0;
+      while (i>=10){
+          int result = originalNumber / i;
+          if (result > 1){
+            myResults.add(result);
+            myDivisor.add(i);
+            int mod=originalNumber%i;
+            myModuls.add(mod);
+            originalNumber = mod;
+          }
+          else{
+              i= i/10;
+          }
+          count++;
+      }
+      //System.out.println("Count "+ count);
+        circular = myModuls.get(myModuls.size()-1)*myDivisor.get(0)+myResults.get(0)*myDivisor.get(1)+myResults.get(1)*myDivisor.get(myDivisor.size()-1)+myResults.get(myResults.size()-1);
+      return circular;
+    }
+
 
 }
