@@ -21,13 +21,13 @@ public class SearchPrimeFastTest {
         mySearchPrimeFast = new SearchPrimeFast(myArrayPrimes,myCircularArrayPrimes);
     }
 
-    /*
+
     @Test
     public  void searchCircularFastTest1() {
-        int circular = mySearchPrimeFast.getCircular(9973);
+        int circular = mySearchPrimeFast.getCircular(999995);
         System.err.println(circular);
     }
-
+/*
     @Test
     public  void searchPrimeFastTest1() {
         mySearchPrimeFast.savePrimesList(1000000);
@@ -38,9 +38,8 @@ public class SearchPrimeFastTest {
 
 @Test
     public  void lastNumerTest(){
-    int number = mySearchPrimeFast.getLastNumber(8922,10000);
+    int number = mySearchPrimeFast.getLastNumber(197,100000);
     System.out.println(number);
-
 }
 
     @After

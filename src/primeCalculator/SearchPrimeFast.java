@@ -78,30 +78,35 @@ public class SearchPrimeFast {
     }
 
     public int getCircular(int originalNumber){
-        ArrayList<Integer> myDivisor = new ArrayList<>();
-        ArrayList<Integer> myResults = new ArrayList<>();
-        ArrayList<Integer> myModuls = new ArrayList<>();
-        int circular =0;
+        int circularNumber=0;
+        int lasNumber = getLastNumber(originalNumber,1000000);
+        originalNumber = originalNumber - lasNumber;
+        for (int i = 1000000; i >= 10 ; i= i/10 ) {
+            if (originalNumber/i > 0){
+                if(i<100){
+                    circularNumber= (lasNumber*i)+(originalNumber/i);
+                    return circularNumber;
+                }
+                if (i>=100 && i<1000){
+                    circularNumber= (lasNumber*i)+(originalNumber/(i/10));
+                    return circularNumber;
+                }
+                if (i>=1000 && i<10000){
+                    circularNumber= (lasNumber*i)+(originalNumber/(i/100));
+                    return circularNumber;
+                }
+                if (i>=10000 && i<100000){
+                    circularNumber= (lasNumber*i)+(originalNumber/(i/1000));
+                    return circularNumber;
+                }
+                if (i>=100000 && i<1000000){
+                    circularNumber= (lasNumber*i)+(originalNumber/(i/10000));
+                    return circularNumber;
+                }
 
-        int i = 1000000;
-        int count = 0;
-      while (i>=10){
-          int result = originalNumber / i;
-          if (result > 1){
-            myResults.add(result);
-            myDivisor.add(i);
-            int mod=originalNumber%i;
-            myModuls.add(mod);
-            originalNumber = mod;
-          }
-          else{
-              i= i/10;
-          }
-          count++;
-      }
-      //System.out.println("Count "+ count);
-        circular = myModuls.get(myModuls.size()-1)*myDivisor.get(0)+myResults.get(0)*myDivisor.get(1)+myResults.get(1)*myDivisor.get(myDivisor.size()-1)+myResults.get(myResults.size()-1);
-      return circular;
+            }
+        }
+        return circularNumber;
     }
 
     /**
