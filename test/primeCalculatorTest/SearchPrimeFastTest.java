@@ -14,6 +14,7 @@ public class SearchPrimeFastTest {
     SearchPrimeFast mySearchPrimeFast ;
     ArrayList<Integer> myArrayPrimes;
     ArrayList<Integer> myCircularArrayPrimes;
+
     @Before
     public void setUp() throws Exception {
         myArrayPrimes = new ArrayList<>();
@@ -21,26 +22,31 @@ public class SearchPrimeFastTest {
         mySearchPrimeFast = new SearchPrimeFast(myArrayPrimes,myCircularArrayPrimes);
     }
 
-
     @Test
     public  void searchCircularFastTest1() {
         int circular = mySearchPrimeFast.getCircular(999995);
         System.err.println(circular);
     }
-/*
+
     @Test
     public  void searchPrimeFastTest1() {
         mySearchPrimeFast.savePrimesList(1000000);
         System.out.println("time in millis " + mySearchPrimeFast.getFinalTime());
         mySearchPrimeFast.showPrimes();
     }
-*/
 
-@Test
+
+    @Test
     public  void lastNumerTest(){
     int number = mySearchPrimeFast.getLastNumber(197,100000);
     System.out.println(number);
-}
+    }
+
+    @Test
+    public void showCircularPrimesTest(){
+    mySearchPrimeFast.savePrimesList(1000);
+    mySearchPrimeFast.showCircularPrimesIn(mySearchPrimeFast.primesArray);
+    }
 
     @After
     public void tearDown() throws Exception {

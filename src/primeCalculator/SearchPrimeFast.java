@@ -134,5 +134,20 @@ public class SearchPrimeFast {
         return number;
     }
 
+    /**
+     * Method to show circular primes numbers founds
+     * @param arraynumbers Array of Primes Numbers
+     */
+    public void showCircularPrimesIn(ArrayList<Integer> arraynumbers){
+        for (int i = 0; i <arraynumbers.size() ; i++) {
+            int temNumber = arraynumbers.get(i);
+            int circularNumber = getCircular(temNumber);
+            if (arraynumbers.contains(circularNumber)){
+                System.err.println("Circular "+circularNumber+" Original "+temNumber);
+            }
+        }
+
+    }
+
 
 }
