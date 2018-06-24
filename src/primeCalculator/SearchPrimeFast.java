@@ -104,5 +104,30 @@ public class SearchPrimeFast {
       return circular;
     }
 
+    /**
+     * Recursive method for get last number.
+     * @param number
+     * @param limit
+     * @return
+     */
+    public int getLastNumber(Integer number, int limit){
+        if (number < 10){
+            return number;
+        }
+        else{
+            if(number/limit > 0){
+                number = number % limit;
+                number = getLastNumber(number,limit);
+
+            }
+            else{
+                limit = limit/10;
+                number = getLastNumber(number,limit);
+
+            }
+        }
+        return number;
+    }
+
 
 }
